@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false" docType="html-5.0" standardStyleSheets="false">
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <title>{{name}}</title>
+    <meta name="description" content=""></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <apex:stylesheet value="{!URLFOR($Resource.@@resourceName, 'vendor.css')}" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.@@resourceName)}/app.css"></link>
+  </head>
+  <body>
+    <script src="{!URLFOR($Resource.@@resourceName)}/vendor.js"></script>
+    <script src="{!URLFOR($Resource.@@resourceName)}/app.js"></script>
+  </body>
+</html>
+</apex:page>

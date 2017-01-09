@@ -1,0 +1,14 @@
+{
+  "framework": "qunit",
+  "test_page": "dist/allTests.html",
+  "launch_in_ci": [
+    "Chrome"
+  ],
+  "launch_in_dev": [
+    "PhantomJS",
+    "Firefox",
+    "Safari",
+    "IE9",
+    "Edge"
+  ]
+}

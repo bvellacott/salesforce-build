@@ -1,0 +1,10 @@
+node_modules
+browserified_modules
+bower_components
+dist
+
+sfConnection.cache
+sfCredentials.json
+
+DEBUG*
+npm-debug.log

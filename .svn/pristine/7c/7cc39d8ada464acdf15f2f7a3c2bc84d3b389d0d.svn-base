@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Visualforce page tests</title>
+<!-- qunit style -->
+	<link rel="stylesheet" href="qunit.css"></link>
+
+</head>
+<body>
+<!-- Required qunit elements -->
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<!-- dependencies that are expected to be available in the visualforce page and which are required for testing-->
+<script src="sharedVendorTestDeps.js"></script>
+<script src="vendorTestDeps.js"></script>
+
+<!-- qunit library -->
+<script src="qunit.js" ></script>
+<script src="/testem.js"></script>
+<script src="testLogger.js" ></script>
+
+<!-- The tested dependencies -->
+<script src="dependencies.js" ></script>
+
+<!-- The tested library -->
+<script src="app.js" ></script>
+
+<!-- The tests -->
+<script src="allTests.js" ></script>
+<script src="allJshint.tests.js" ></script>
+
+</body>
+</html>
