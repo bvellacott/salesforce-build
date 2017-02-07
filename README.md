@@ -1,4 +1,4 @@
-# kimble broccoli build project
+# broccoli build project
 
 This is a project setup which significantly speeds up the process of developing pages on salesforce. Essentially what it does is it builds a a zipped staticresource and a page and deploys them to a salesforce org in 'realtime' i.e. when you save a file that effects the staticreource or page. The build process checks for javascript errors (missing semicolons, colons etc..) and performance degraders (functions defined in loops etc..) transpiles the javascript from es6 to plain js and browserifies into a single js file (minifies/uglifies in ci mode), compiles your sass/scss code into a single css file (compresses in ci mode), bundles static files (images etc..), bundles tests, creates test pages and runs the tests in ci.
 
