@@ -37,7 +37,7 @@
     "broccoli-merge-trees": "1.2.1",
     "broccoli-render-template": "0.0.3",
     "broccoli-replace": "0.12.0",
-    "broccoli-salesforce-deploy": "1.0.2",
+    "broccoli-salesforce-deploy": "1.0.6",
     "broccoli-sass-source-maps": "1.8.1",
     "broccoli-stew": "1.4.0",
     "broccoli-uglify-sourcemap": "1.4.2",
