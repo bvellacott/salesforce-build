@@ -34,7 +34,7 @@ function build(pagesDir, pageName, node_modules, options) {
 	const debugResult = options.debugResult;
 	const isProduction = options.isProduction;
 
-	const pagepath = pagesDir + '/' + pageName
+	const pagepath = pagesDir + '/' + pageName + '.resource';
 	const jsPath = pagepath + '/js';
 	const stylePath = pagepath + '/style';
 	const staticFilesPath = pagepath + '/static';

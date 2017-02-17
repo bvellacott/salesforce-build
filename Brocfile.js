@@ -9,6 +9,7 @@ const BrowserSync = require('broccoli-browser-sync-bv');
 const proxy = require('http-proxy-middleware');
 
 const buildPage = require('./buildTools/pageBuilder');
+const buildBundle = require('./buildTools/bundleBuilder');
 const buildAllTests = require('./buildTools/ciTestsBuilder');
 
 // const BrowserSync = require('broccoli-browser-sync');
@@ -16,7 +17,8 @@ const buildAllTests = require('./buildTools/ciTestsBuilder');
 const isProduction = process.env.BROCCOLI_ENV === 'production';
 var allNodes = [];
 
-const pagesDir = './dev';
+const pagesDir = '.';
+const bundlesDir = './aura';
 
 var node_modules = pickFiles('./browserified_modules', { include: ['**/*'], destDir: './node_modules' });
 
@@ -57,18 +59,36 @@ function getPageBuildOptions(pageName) {
 	);
 }
 
+// pages
 var pageNodes = [];
 var pageDirectories = fs.readdirSync(pagesDir).filter(function(file) {
-	return fs.statSync(path.join(pagesDir, file)).isDirectory();
+	return fs.statSync(path.join(pagesDir, file)).isDirectory() && 
+		file.endsWith('.resource');
 });
 
 pageDirectories.forEach(function(pageDir) {
-	var pageName = path.basename(pageDir);
+	var pageName = path.basename(pageDir).replace('.resource', '');
 	var pageNode = buildPage(pagesDir, pageName, node_modules, getPageBuildOptions(pageName));
 	pageNodes.push(pageNode);
 });
 
 var pages = mergeNodes(pageNodes);
+
+// lightning bundles
+var bundleNodes = [];
+var bundleDirectories = fs.readdirSync(bundlesDir).filter(function(file) {
+	return fs.statSync(path.join(bundlesDir, file)).isDirectory();
+});
+
+bundleDirectories.forEach(function(bundleDir) {
+	var bundleName = path.basename(bundleDir);
+	var bundleNode = buildBundle(bundlesDir, bundleName, node_modules, { debugResult: true, isProduction: isProduction });
+	bundleNodes.push(bundleNode);
+});
+
+var bundles = mergeNodes(bundleNodes);
+
+var pagesAndBundles = mergeNodes([pages, bundles]);
 
 // browsersync options 
 var bsOptions = {
@@ -90,9 +110,9 @@ var bsOptions = {
     ]
   }
 };
-var browserSync = new BrowserSync([pages], bsOptions);
+var browserSync = new BrowserSync([pagesAndBundles], bsOptions);
 
-allNodes = allNodes.concat([pages, browserSync]);
+allNodes = allNodes.concat([pagesAndBundles, browserSync]);
 
 const staticTestFiles = pickFiles(
 	mergeNodes(['./node_modules/qunitjs/qunit', 'shared']), {
@@ -108,4 +128,3 @@ if(isProduction) {
 var all = mergeNodes(allNodes);
 
 module.exports = all;
-
