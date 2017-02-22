@@ -8,17 +8,17 @@ This is a project to bring proper tools like jshinting, testing, sass/scss, es6,
 
 Once you have cloned this repo, run:
 
-´´´
+```
 npm install
 
-´´´
+```
 *! please note !* this will reinstall bower, broccoli and testem if you have any of those installed already
 
 if you're using mac or linux and need admin rights to install global node modules use:
 
-´´´
+```
 sudo npm install
-´´´
+```
 
 ### deepdive install
 
@@ -48,13 +48,13 @@ Now you should be setup and ready to go.
 First of all, to enable deployment to an org, you should provide the credentials to an org. Do this by creating a file called 'sfCredentials.json' in the the root directory of this build project.
 
 **i.e.**
-´´´
+```
 {
   "username": "user@fakedomain.com",
   "password": "password123",
   "securityToken": "sdfsdlksfo83p02ks"
 }
-´´´
+```
 
 The usage scipts have been entered into your package.json file under the variable 'scripts'.
 
@@ -96,13 +96,14 @@ Contains the cached information for the salesforce deployment plugin.
 
 ###sfCredentials.json
 Add your salesforce connection credentials in this file in the strict json format:
-´´´
+
+```
 {
   "username": "user@fakedomain.com",
   "password": "password123",
   "securityToken": "sdfsdlksfo83p02ks"
 }
-´´´
+```
 
 ###testem.json
 Contains the configuration for testem, used bu the ci build. The interesting bit is "launch_in_ci", where you can specify the browsers you want ci to test with. You need the browsers to be installed in the environment and testem should then be able to find the browser executable by the default installation directory.
