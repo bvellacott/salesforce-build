@@ -22,6 +22,8 @@ sudo npm install
 
 ### deepdive install
 
+Everything you'd do here is in the "preinstall" script in package.json. If you're planning to run the commands manually, remove that script first.
+
 To use this project you'll need the following:
 
 - node
@@ -31,11 +33,11 @@ To use this project you'll need the following:
 
 You should start by installing the 'Node Version Manager' and you'll find the doc for doing that at https://github.com/coreybutler/nvm-windows#user-content-node-version-manager-nvm-for-windows. Remember to follow the documentation on how to install the latest version of node also.
 
-Once you have node installed, if you're planning to use bower dependencies or decide later to use them, you'll need to install git. For this, go to https://git-scm.com/downloads. You can now install bower using node package manager by opening a command line console and typing 'npm install -g bower' where -g stands for global and will make the bower command available globally.
+Once you have node installed, if you're planning to use bower dependencies or decide later to use them, you'll need to install git. For this, go to https://git-scm.com/downloads. You can now install bower using node package manager by opening a command line console and typing ```npm install -g bower``` where -g stands for global and will make the bower command available globally.
 
-To install the actual build tool: broccoli, type 'npm install -g broccoli-cli'.
+To install the actual build tool: broccoli, type ```npm install -g broccoli-cli```.
 
-To install the testing framework 'testem' you can type 'npm install -g testem'.
+To install the testing framework 'testem' you can type ```npm install -g testem```.
 
 Finally to install all the required libraries, go to the root directory of the build project and type 'npm install'.
 
@@ -58,26 +60,35 @@ First of all, to enable deployment to an org, you should provide the credentials
 
 The usage scipts have been entered into your package.json file under the variable 'scripts'.
 
-To create a new page by the name 'someNewPage' type 'npm run newPage someNewPage'.
+To create a new page by the name **someNewPage** type ```npm run newPage someNewPage```.
 
-To create a new staticresource by the name 'someNewResource' type 'npm run newResource someNewResource'.
+To create a new staticresource by the name **someNewResource** type ```npm run newResource someNewResource```.
 
-To create a new aura component by the name 'someNewComponent' type 'npm run newAuraComponent someNewComponent'.
+To create a new aura component by the name **someNewComponent** type ```npm run newAuraComponent someNewComponent```.
 
-To create a new aura app by the name 'someNewApp' type 'npm run newAuraApp someNewApp'.
+To create a new aura app by the name **someNewApp** type ```npm run newAuraApp someNewApp```.
 
 The structure of the two former is the same except the staticresource structure doesn't have a page.html file and won't therefore create a page on your salesforce org.
 
-To start development and see your changes appear in realtime type 'npm start' or 'npm run start'. To quit the service do ctrl^c (twice on windows). Every time you add an npm dependency, bower dependency, a new page or a staticresource, you'll need to restart the service.
+To start development and see your changes appear in realtime type 
+```
+npm start
+``` 
+or 
+```
+npm run start
+```. 
 
-To start the service in ci mode, which will create a bundled test page and uglify and minify everything (!slow!), type 'npm run start-ci'.
+To quit the service do ctrl^c (twice on windows). Every time you add an npm dependency, bower dependency, a new page or a staticresource, you'll need to restart the service.
+
+To start the service in ci mode, which will create a bundled test page and uglify and minify everything (**!slow!**), type 'npm run start-ci'.
 
 And finally to build everything and run tests on all the specified browsers (specified in testem.json) type 'npm run build'.
 
 ## projet structure
 
 ###.gitignore
-Contains all the files and directories that can/should be ignored. When using svn ignore them also.
+Contains all the files and directories that can/should be ignored.
 
 ###.jshint
 Contains the configuration for jshint - the tool that checks your javascript for errors and performance degraders.
