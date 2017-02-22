@@ -1,8 +1,26 @@
 # broccoli build project
 
-This is a project setup which significantly speeds up the process of developing pages on salesforce. Essentially what it does is it builds a a zipped staticresource and a page and deploys them to a salesforce org in 'realtime' i.e. when you save a file that effects the staticreource or page. The build process checks for javascript errors (missing semicolons, colons etc..) and performance degraders (functions defined in loops etc..) transpiles the javascript from es6 to plain js and browserifies into a single js file (minifies/uglifies in ci mode), compiles your sass/scss code into a single css file (compresses in ci mode), bundles static files (images etc..), bundles tests, creates test pages and runs the tests in ci.
+This is a project to bring proper tools like jshinting, testing, sass/scss, es6, dependency management and browserifying in a realtime build into the world of salesforce. It uses the broccoli build tool for the sake of scalability.
 
 ## installation
+
+### quick install
+
+Once you have cloned this repo, run:
+
+´´´bash
+npm install
+
+´´´
+*! please note !* this will reinstall bower, broccoli and testem if you have any of those installed already
+
+if you're using mac or linux and need admin rights to install global node modules use:
+
+´´´bash
+sudo npm install
+´´´
+
+### deepdive install
 
 To use this project you'll need the following:
 
@@ -27,7 +45,16 @@ Now you should be setup and ready to go.
 
 ## usage
 
-First of all, to enable deployment to an org, you should provide the credentials to an org. Do this by creating a file called 'sfCredentials.json' in the the root directory of this build project. See the sfCredentials.json documentation further along this readme.
+First of all, to enable deployment to an org, you should provide the credentials to an org. Do this by creating a file called 'sfCredentials.json' in the the root directory of this build project.
+
+**i.e.**
+´´´js
+{
+  "username": "user@fakedomain.com",
+  "password": "password123",
+  "securityToken": "sdfsdlksfo83p02ks"
+}
+´´´
 
 The usage scipts have been entered into your package.json file under the variable 'scripts'.
 
@@ -35,9 +62,13 @@ To create a new page by the name 'someNewPage' type 'npm run newPage someNewPage
 
 To create a new staticresource by the name 'someNewResource' type 'npm run newResource someNewResource'.
 
+To create a new aura component by the name 'someNewComponent' type 'npm run newAuraComponent someNewComponent'.
+
+To create a new aura app by the name 'someNewApp' type 'npm run newAuraApp someNewApp'.
+
 The structure of the two former is the same except the staticresource structure doesn't have a page.html file and won't therefore create a page on your salesforce org.
 
-To start development and see your changes appear in realtime type 'npm start' or 'npm run start'. To quit the service do ctrl^c twice. Every time you add an npm dependency, bower dependency, a new page or a staticresource, you'll need to restart the service.
+To start development and see your changes appear in realtime type 'npm start' or 'npm run start'. To quit the service do ctrl^c (twice on windows). Every time you add an npm dependency, bower dependency, a new page or a staticresource, you'll need to restart the service.
 
 To start the service in ci mode, which will create a bundled test page and uglify and minify everything (!slow!), type 'npm run start-ci'.
 
@@ -65,11 +96,13 @@ Contains the cached information for the salesforce deployment plugin.
 
 ###sfCredentials.json
 Add your salesforce connection credentials in this file in the strict json format:
+´´´js
 {
   "username": "user@fakedomain.com",
   "password": "password123",
   "securityToken": "sdfsdlksfo83p02ks"
 }
+´´´
 
 ###testem.json
 Contains the configuration for testem, used bu the ci build. The interesting bit is "launch_in_ci", where you can specify the browsers you want ci to test with. You need the browsers to be installed in the environment and testem should then be able to find the browser executable by the default installation directory.
@@ -83,11 +116,14 @@ The build is optimised by browserifying node modules only once into this directo
 ###buildTools
 Contains modules referenced by Brocfile.js. Alter these to alter your build.
 
-###dev
-This is the core of your development every page/staticresource is represented by a folder in this directory. Use the 'newPage' and 'newResource' scripts in 'package.json' to create valid page/staticresource structures in this directory.
+###.resource directories
+This is the core of your development every page/staticresource is represented by a **.resource** folder. Use the 'newPage' and 'newResource' scripts in 'package.json' to create valid page/staticresource structures. The reason for using **.resource** directories is that it is compatible with MavensMate resource bundles. 
+
+###aura
+Contains your aura components and apps.
 
 ###dist
-This is the distribution directory produced by running the 'build' script in package.json. Look at it to see the results of your build. The build will automatically deploy the staticresources and pages to the org that you have given credentials for.
+This is the distribution directory produced by running the 'build' script in package.json. Look at it to see the results of your build. The build will automatically deploy the staticresources, pages, aura components and apps to the org that you have given credentials for.
 
 ###node_modules
 Contains your node dependencies and is managed by npm.
@@ -100,3 +136,6 @@ Contains the shared files utilised by the build tool to build each page and stat
 
 ###templates
 Contains the template directory structures to setup new page and static resource structures. Modify these to modify the results of the 'newPage' and 'newResource' scripts.
+
+
+**Please feel free to drop a line if you would like to contribute**

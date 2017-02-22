@@ -7,6 +7,8 @@
     "preinstall": "npm install -g bower && npm install -g broccoli-cli && npm install -g testem && bower install",
     "newPage": "node ./scripts/new -p ",
     "newResource": "node ./scripts/new -r ",
+    "newAuraComponent": "node ./scripts/new -c ",
+    "newAuraApp": "node ./scripts/new -a ",
     "serve": "broccoli serve",
     "browserifyModules": "node ./scripts/browserifyNodeModules",
     "start": "npm run browserifyModules && broccoli serve",
