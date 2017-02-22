@@ -70,14 +70,16 @@ To create a new aura app by the name **someNewApp** type ```npm run newAuraApp s
 
 The structure of the two former is the same except the staticresource structure doesn't have a page.html file and won't therefore create a page on your salesforce org.
 
-To start development and see your changes appear in realtime type 
+To start development and see your changes appear in realtime type:
 ```
 npm start
 ``` 
-or 
+or
+
 ```
 npm run start
-```. 
+```
+
 
 To quit the service do ctrl^c (twice on windows). Every time you add an npm dependency, bower dependency, a new page or a staticresource, you'll need to restart the service.
 
