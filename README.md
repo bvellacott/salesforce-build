@@ -87,7 +87,7 @@ To start the service in ci mode, which will create a bundled test page and uglif
 
 And finally to build everything and run tests on all the specified browsers (specified in testem.json) type 'npm run build'.
 
-## projet structure
+## project structure
 
 ###.gitignore
 Contains all the files and directories that can/should be ignored.
