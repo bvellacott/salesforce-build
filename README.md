@@ -8,7 +8,7 @@ This is a project to bring proper tools like jshinting, testing, sass/scss, es6,
 
 Once you have cloned this repo, run:
 
-´´´bash
+´´´
 npm install
 
 ´´´
@@ -16,7 +16,7 @@ npm install
 
 if you're using mac or linux and need admin rights to install global node modules use:
 
-´´´bash
+´´´
 sudo npm install
 ´´´
 
@@ -48,7 +48,7 @@ Now you should be setup and ready to go.
 First of all, to enable deployment to an org, you should provide the credentials to an org. Do this by creating a file called 'sfCredentials.json' in the the root directory of this build project.
 
 **i.e.**
-´´´js
+´´´
 {
   "username": "user@fakedomain.com",
   "password": "password123",
@@ -96,7 +96,7 @@ Contains the cached information for the salesforce deployment plugin.
 
 ###sfCredentials.json
 Add your salesforce connection credentials in this file in the strict json format:
-´´´js
+´´´
 {
   "username": "user@fakedomain.com",
   "password": "password123",
